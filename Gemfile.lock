@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    expiring_memory_store (0.0.0)
+    expiring_memory_store (1.0.0)
 
 GEM
   remote: https://rubygems.org/
