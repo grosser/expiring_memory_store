@@ -1,4 +1,9 @@
-Fast & Simple Ruby In-Memory Store with expiration
+Fast, Simple, & Threadsafe Ruby In-Memory Store with expiration
+
+ - Fast (using Process::CLOCK_MONOTONIC)
+ - Simple
+ - Threadsafe
+ - Can cache nil
 
 Install
 =======
@@ -11,7 +16,13 @@ Usage
 =====
 
 ```Ruby
-CODE EXAMPLE
+store = ExpiringMemoryStore.new
+store.set :a, 1, expires_in: 4
+store.get :a # -> 1
+store.get :b # -> nil
+store.add :a, 2, expires_in: 4 # -> false
+store.fetch(:a) { 1 } # -> 1
+store.cleanup # remove all expired entries
 ```
 
 Author
